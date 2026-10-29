@@ -1,6 +1,15 @@
 (function () {
   document.querySelectorAll('[data-current-year]').forEach(function (node) { node.textContent = new Date().getFullYear(); });
   var toggle = document.querySelector('.menu-toggle'); var nav = document.querySelector('.site-nav');
+  if (nav && !nav.querySelector('[data-small-businesses-link]')) {
+    var subdivision = nav.querySelector('a[href="#subdivisions"], a[href="/services/#subdivisions"]');
+    if (subdivision) {
+      var smallBusinesses = document.createElement('a');
+      smallBusinesses.href = '/small-businesses/'; smallBusinesses.textContent = 'Small businesses'; smallBusinesses.setAttribute('data-small-businesses-link', '');
+      if (window.location.pathname === '/small-businesses/') { smallBusinesses.classList.add('is-current'); }
+      subdivision.insertAdjacentElement('afterend', smallBusinesses);
+    }
+  }
   if (toggle && nav) { toggle.addEventListener('click', function () { var open = nav.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', String(open)); }); }
   var config = window.GESCH_CONFIG || {};
   document.querySelectorAll('[data-enquiry-form]').forEach(function (form) {
