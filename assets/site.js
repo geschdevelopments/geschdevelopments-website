@@ -1,7 +1,7 @@
 (function () {
   document.querySelectorAll('[data-current-year]').forEach(function (node) { node.textContent = new Date().getFullYear(); });
   var toggle = document.querySelector('.menu-toggle'); var nav = document.querySelector('.site-nav');
-  if (nav && !nav.querySelector('[data-small-businesses-link]')) {
+  if (nav && !nav.querySelector('a[href="/small-businesses/"]')) {
     var subdivision = nav.querySelector('a[href="#subdivisions"], a[href="/services/#subdivisions"]');
     if (subdivision) {
       var smallBusinesses = document.createElement('a');
@@ -11,7 +11,7 @@
     }
   }
   if (nav && !nav.querySelector('[data-blog-link]')) {
-    var blogAfter = nav.querySelector('[data-small-businesses-link]');
+    var blogAfter = nav.querySelector('a[href="/small-businesses/"]');
     if (blogAfter) {
       var blog = document.createElement('a');
       blog.href = '/blog/'; blog.textContent = 'Blog'; blog.setAttribute('data-blog-link', '');
