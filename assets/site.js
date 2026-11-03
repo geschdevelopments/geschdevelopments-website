@@ -10,6 +10,15 @@
       subdivision.insertAdjacentElement('afterend', smallBusinesses);
     }
   }
+  if (nav && !nav.querySelector('[data-blog-link]')) {
+    var blogAfter = nav.querySelector('[data-small-businesses-link]');
+    if (blogAfter) {
+      var blog = document.createElement('a');
+      blog.href = '/blog/'; blog.textContent = 'Blog'; blog.setAttribute('data-blog-link', '');
+      if (window.location.pathname === '/blog/' || window.location.pathname.indexOf('/articles/') === 0) { blog.classList.add('is-current'); }
+      blogAfter.insertAdjacentElement('afterend', blog);
+    }
+  }
   if (toggle && nav) { toggle.addEventListener('click', function () { var open = nav.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', String(open)); }); }
   var config = window.GESCH_CONFIG || {};
   document.querySelectorAll('[data-enquiry-form]').forEach(function (form) {
